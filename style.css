@@ -32,7 +32,9 @@ body {
   width: 90px;
   height: 90px;
 }
-
+.black {
+  background-color: #ab600d !important;
+}
 
 .list {
   display: flex;

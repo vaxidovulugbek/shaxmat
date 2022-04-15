@@ -170,7 +170,7 @@ let elitem = document.querySelectorAll(".item")
 elitem.forEach((itemm, index) => {
   itemm.addEventListener("mouseover",(e) => {
     // console.log(e.target.classList[1]);
-    e.target.classList.add("red")
+    e.target.classList.add("black")
     elX.textContent = e.target.classList[1].slice(-1)
     elY.textContent = e.target.classList[2]
 
@@ -179,6 +179,10 @@ elitem.forEach((itemm, index) => {
       if (el.classList[1].slice(-1) == e.target.classList[1].slice(-1)) {
         el.classList.add("red")
       }
+      if (el.classList[2] == e.target.classList[2]) {
+        el.classList.add("red")
+      }
+      console.log(el.classList[2]);
       // console.log(el.classList[1].slice(-1));
     })
   })
@@ -187,9 +191,12 @@ elitem.forEach((itemm, index) => {
 elitem.forEach((itemm, index) => {
   itemm.addEventListener("mouseout",(e) => {
     // console.log(e.target.classList);
-    e.target.classList.remove("red")
+    e.target.classList.remove("black")
     massiv.forEach(el => {
       if (el.classList[1].slice(-1) == e.target.classList[1].slice(-1)) {
+        el.classList.remove("red")
+      }
+      if (el.classList[2] == e.target.classList[2]) {
         el.classList.remove("red")
       }
       // console.log(el.classList[1].slice(-1));
