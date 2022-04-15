@@ -11,11 +11,9 @@ let count2 = 1
 let y = 1
 for (let i = 0; i < 8; i++){
   let li = document.createElement("li")
-  li.className = `item 8 ${y}`
-  li.id = `${count2}`
-  if(y == 8) {
-    y = li.classList[1]
-  }
+  li.className = `item`
+  li.classList.add(`y_${y}`)
+  li.classList.add(`8`)
   elList.appendChild(li)
   if (count % 2 == 0) {
     li.classList.add("white")
@@ -32,8 +30,10 @@ for (let i = 0; i < 8; i++){
 y = 1
 for (let i = 0; i < 8; i++){
   let li = document.createElement("li")
-  li.className = `item 7 ${y}`
-  li.id = `${count2}`
+  li.className = `item`
+  li.classList.add(`y_${y}`)
+  li.classList.add(`7`)
+  li.id = `7`
   elList.appendChild(li)
   if (count % 2 == 0) {
     li.classList.add("dark")
@@ -45,13 +45,14 @@ for (let i = 0; i < 8; i++){
   count2++
   y++
   massiv.push(li)
-  // console.log(li.className);
 }
 y = 1
 for (let i = 0; i < 8; i++){
   let li = document.createElement("li")
-  li.className = `item 6 ${y}`
-  li.id = `${count2}`
+  li.className = `item`
+  li.classList.add(`y_${y}`)
+  li.classList.add(`6`)
+  li.id = `6`
   elList.appendChild(li)
   if (count % 2 == 0) {
     li.classList.add("white")
@@ -63,13 +64,14 @@ for (let i = 0; i < 8; i++){
   count2++
   y++
   massiv.push(li)
-  // obj.push(li)
 }
 y = 1
 for (let i = 0; i < 8; i++){
   let li = document.createElement("li")
-  li.className = `item 5 ${y}`
-  li.id = `${count2}`
+  li.className = `item`
+  li.classList.add(`y_${y}`)
+  li.classList.add(`5`)
+  li.id = `5`
   elList.appendChild(li)
   if (count % 2 == 0) {
     li.classList.add("dark")
@@ -81,13 +83,14 @@ for (let i = 0; i < 8; i++){
   count2++
   y++
   massiv.push(li)
-  // obj.push(li)
 }
 y = 1
 for (let i = 0; i < 8; i++){
   let li = document.createElement("li")
-  li.className = `item 4 ${y}`
-  li.id = `${count2}`
+  li.className = `item`
+  li.classList.add(`y_${y}`)
+  li.classList.add(`4`)
+  li.id = `4`
   elList.appendChild(li)
   if (count % 2 == 0) {
     li.classList.add("white")
@@ -99,13 +102,14 @@ for (let i = 0; i < 8; i++){
   count2++
   y++
   massiv.push(li)
-  // obj.push(li)
 }
 y = 1
 for (let i = 0; i < 8; i++){
   let li = document.createElement("li")
-  li.className = `item 3 ${y}`
-  li.id = `${count2}`
+  li.className = `item`
+  li.classList.add(`y_${y}`)
+  li.classList.add(`3`)
+  li.id = `3`
   elList.appendChild(li)
   if (count % 2 == 0) {
     li.classList.add("dark")
@@ -117,13 +121,14 @@ for (let i = 0; i < 8; i++){
   count2++
   y++
   massiv.push(li)
-  // obj.push(li)
 }
 y = 1
 for (let i = 0; i < 8; i++){
   let li = document.createElement("li")
-  li.className = `item 2 ${y}`
-  li.id = `${count2}`
+  li.className = `item`
+  li.classList.add(`Y_${y}`)
+  li.classList.add(`2`)
+  li.id = `2`
   elList.appendChild(li)
   if (count % 2 == 0) {
     li.classList.add("white")
@@ -135,12 +140,13 @@ for (let i = 0; i < 8; i++){
   count2++
   y++
   massiv.push(li)
-  // obj.push(li)
 }
 y = 1
 for (let i = 0; i < 8; i++){
   let li = document.createElement("li")
-  li.className = `item 1 ${y}`
+  li.className = `item`
+  li.classList.add(`y_${y}`)
+  li.classList.add(`1`)
   li.id = `${count2}`
   elList.appendChild(li)
   if (count % 2 == 0) {
@@ -153,7 +159,7 @@ for (let i = 0; i < 8; i++){
   count2++
   y++
   massiv.push(li)
-  // obj.push(li)
+  console.log(li.classList);
 }
 
 
@@ -165,9 +171,16 @@ elitem.forEach((itemm, index) => {
   itemm.addEventListener("mouseover",(e) => {
     // console.log(e.target.classList[1]);
     e.target.classList.add("red")
-    elX.textContent = e.target.classList[1]
+    elX.textContent = e.target.classList[1].slice(-1)
     elY.textContent = e.target.classList[2]
-    // console.log(e.target.classList);
+
+    // console.log(massiv[0].classList[1].slice(-1));
+    massiv.forEach(el => {
+      if (el.classList[1].slice(-1) == e.target.classList[1].slice(-1)) {
+        el.classList.add("red")
+      }
+      // console.log(el.classList[1].slice(-1));
+    })
   })
 })
 
@@ -175,6 +188,12 @@ elitem.forEach((itemm, index) => {
   itemm.addEventListener("mouseout",(e) => {
     // console.log(e.target.classList);
     e.target.classList.remove("red")
+    massiv.forEach(el => {
+      if (el.classList[1].slice(-1) == e.target.classList[1].slice(-1)) {
+        el.classList.remove("red")
+      }
+      // console.log(el.classList[1].slice(-1));
+    })
   })
 })
 
