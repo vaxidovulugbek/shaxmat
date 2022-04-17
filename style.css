@@ -7,6 +7,7 @@
 body {
   background: radial-gradient(#CFB070, #ab600d) !important;
   perspective: 1000px;
+  padding-bottom: 100px;
 }
 .container {
   width: 98%;
