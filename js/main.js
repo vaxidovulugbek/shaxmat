@@ -33,7 +33,6 @@ for (let i = 0; i < 8; i++){
   li.className = `item`
   li.classList.add(`y_${y}`)
   li.classList.add(`7`)
-  li.id = `7`
   elList.appendChild(li)
   if (count % 2 == 0) {
     li.classList.add("dark")
@@ -52,7 +51,6 @@ for (let i = 0; i < 8; i++){
   li.className = `item`
   li.classList.add(`y_${y}`)
   li.classList.add(`6`)
-  li.id = `6`
   elList.appendChild(li)
   if (count % 2 == 0) {
     li.classList.add("white")
@@ -71,7 +69,6 @@ for (let i = 0; i < 8; i++){
   li.className = `item`
   li.classList.add(`y_${y}`)
   li.classList.add(`5`)
-  li.id = `5`
   elList.appendChild(li)
   if (count % 2 == 0) {
     li.classList.add("dark")
@@ -90,7 +87,6 @@ for (let i = 0; i < 8; i++){
   li.className = `item`
   li.classList.add(`y_${y}`)
   li.classList.add(`4`)
-  li.id = `4`
   elList.appendChild(li)
   if (count % 2 == 0) {
     li.classList.add("white")
@@ -109,7 +105,6 @@ for (let i = 0; i < 8; i++){
   li.className = `item`
   li.classList.add(`y_${y}`)
   li.classList.add(`3`)
-  li.id = `3`
   elList.appendChild(li)
   if (count % 2 == 0) {
     li.classList.add("dark")
@@ -128,7 +123,6 @@ for (let i = 0; i < 8; i++){
   li.className = `item`
   li.classList.add(`Y_${y}`)
   li.classList.add(`2`)
-  li.id = `2`
   elList.appendChild(li)
   if (count % 2 == 0) {
     li.classList.add("white")
@@ -147,7 +141,6 @@ for (let i = 0; i < 8; i++){
   li.className = `item`
   li.classList.add(`y_${y}`)
   li.classList.add(`1`)
-  li.id = `${count2}`
   elList.appendChild(li)
   if (count % 2 == 0) {
     li.classList.add("dark")
@@ -159,16 +152,34 @@ for (let i = 0; i < 8; i++){
   count2++
   y++
   massiv.push(li)
-  console.log(li.classList);
+  // console.log(li.classList);
 }
 
-// let elitem = document.querySelectorAll(".item")
-// elitem.forEach((itemm, index) => {
+let elitem = document.querySelectorAll(".item")
+
+
+elitem.forEach((itemm, index) => {
+  itemm.addEventListener("mouseover",(e) => {
+    // console.log(e.target.classList[1]);
+    e.target.classList.add("black")
+    elX.textContent = e.target.classList[2]
+    elY.textContent = e.target.classList[1].slice(-1)
+  })
+})
+
+elitem.forEach((itemm, index) => {
+  itemm.addEventListener("mouseout",(e) => {
+    e.target.classList.remove("black")
+  })
+})
+
+
+// ruh yurishi
+// elContentSubitem1.addEventListener("click", (e) => {
+//   // let elitem = document.querySelectorAll(".item")
+//   elitem.forEach((itemm, index) => {
 //   itemm.addEventListener("mouseover",(e) => {
-//     // console.log(e.target.classList[1]);
 //     e.target.classList.add("black")
-//     elX.textContent = e.target.classList[1].slice(-1)
-//     elY.textContent = e.target.classList[2]
 //     massiv.forEach(el => {
 //       if (el.classList[1].slice(-1) == e.target.classList[1].slice(-1)) {
 //         el.classList.add("red")
@@ -176,7 +187,7 @@ for (let i = 0; i < 8; i++){
 //       if (el.classList[2] == e.target.classList[2]) {
 //         el.classList.add("red")
 //       }
-//       console.log(el.classList[2]);
+//       // console.log(el.classList[2]);
 //     })
 //   })
 // })
@@ -195,49 +206,742 @@ for (let i = 0; i < 8; i++){
 //     })
 //   })
 // })
-
-
-
-elContentSubitem1.addEventListener("click", (e) => {
-  e.preventDefault()
-  let elitem = document.querySelectorAll(".item")
+// })
+elContentSubitem1.addEventListener("click" ,() => {
   elitem.forEach((itemm, index) => {
-  itemm.addEventListener("mouseover",(e) => {
-    e.target.classList.add("black")
-    elX.textContent = e.target.classList[1].slice(-1)
-    elY.textContent = e.target.classList[2]
-    massiv.forEach(el => {
-      if (el.classList[1].slice(-1) == e.target.classList[1].slice(-1)) {
-        el.classList.add("red")
-      }
-      if (el.classList[2] == e.target.classList[2]) {
-        el.classList.add("red")
-      }
-      console.log(el.classList[2]);
+    itemm.addEventListener("mouseover",(j) => {
+      elitem.forEach((d,h)=>{
+        if (j.target.classList[2] ==  d.classList[2])   {
+          d.classList.add("red")
+        }
+        if (j.target.classList[1].split("_")[1] == d.classList[1].split("_")[1]) {
+          d.classList.add("red")
+        }
+      }) 
     })
+  })
+
+  elitem.forEach((itemm, index) => {
+    itemm.addEventListener("mouseout",(j) => {
+      elitem.forEach((d,h)=>{
+        if (j.target.classList[2] ==  d.classList[2])   {
+          d.classList.remove("red")
+        }
+        if (j.target.classList[1].split("_")[1] == d.classList[1].split("_")[1]) {
+          d.classList.remove("red")
+        }
+      }) 
+    })
+  })
+})
+
+
+// ========================================================================
+// =========================== SHOX YURISHI ===============================
+// ========================================================================
+
+elContentSubitem5.addEventListener("click", (e) => {
+  elitem.forEach((itemm, index) => {
+  itemm.addEventListener("mouseover",(j) => {
+    elitem.forEach((d,h)=>{
+      // console.log(d);
+      // console.log(j.target.classList[1].split("_")[1]);
+      // console.log(d.classList[2]);
+      // console.log(j.target.classList[2]);
+      // console.log(j.target.classList[1]);
+      // let ay = j.target.classList[1].split("_")[1]
+      // let ax = j.target.classList[2]
+      // console.log(ax);
+      // console.log(d.classList[1].split("_")[1]);
+      // console.log(d.classList[1].split("_")[1]);
+      if(j.target.classList[2]-0+1 == d.classList[2] && j.target.classList[1].split("_")[1] == d.classList[1].split("_")[1]){
+        d.classList.add("red")
+      }
+      if(j.target.classList[2] == d.classList[2] && j.target.classList[1].split("_")[1]-0+1 == d.classList[1].split("_")[1]){
+        d.classList.add("red")
+      }
+      if(j.target.classList[2]-0-1 == d.classList[2] && j.target.classList[1].split("_")[1] == d.classList[1].split("_")[1]){
+        d.classList.add("red")
+      }
+      if(j.target.classList[2] == d.classList[2] && j.target.classList[1].split("_")[1]-0-1 == d.classList[1].split("_")[1]){
+        d.classList.add("red")
+      }
+      if(j.target.classList[2]-0+1 == d.classList[2] && j.target.classList[1].split("_")[1]-0+1 == d.classList[1].split("_")[1]){
+        d.classList.add("red")
+      }
+      if(j.target.classList[2]-0+1 == d.classList[2] && j.target.classList[1].split("_")[1]-0-1 == d.classList[1].split("_")[1]){
+        d.classList.add("red")
+      }
+      if(j.target.classList[2]-0-1 == d.classList[2] && j.target.classList[1].split("_")[1]-0+1 == d.classList[1].split("_")[1]){
+        d.classList.add("red")
+      }
+      if(j.target.classList[2]-0-1 == d.classList[2] && j.target.classList[1].split("_")[1]-0-1 == d.classList[1].split("_")[1]){
+        d.classList.add("red")
+      }
+    }) 
   })
 })
 
 elitem.forEach((itemm, index) => {
-  itemm.addEventListener("mouseout",(e) => {
-    e.target.classList.remove("black")
-    massiv.forEach(el => {
-      if (el.classList[1].slice(-1) == e.target.classList[1].slice(-1)) {
-        el.classList.remove("red")
+  itemm.addEventListener("mouseout",(j) => {
+    elitem.forEach((d,h)=>{
+      if(j.target.classList[2]-0+1 == d.classList[2] && j.target.classList[1].split("_")[1] == d.classList[1].split("_")[1]){
+        d.classList.remove("red")
       }
-      if (el.classList[2] == e.target.classList[2]) {
-        el.classList.remove("red")
+      if(j.target.classList[2] == d.classList[2] && j.target.classList[1].split("_")[1]-0+1 == d.classList[1].split("_")[1]){
+        d.classList.remove("red")
       }
-      // console.log(el.classList[1].slice(-1));
-    })
+      if(j.target.classList[2]-0-1 == d.classList[2] && j.target.classList[1].split("_")[1] == d.classList[1].split("_")[1]){
+        d.classList.remove("red")
+      }
+      if(j.target.classList[2] == d.classList[2] && j.target.classList[1].split("_")[1]-0-1 == d.classList[1].split("_")[1]){
+        d.classList.remove("red")
+      }
+      if(j.target.classList[2]-0+1 == d.classList[2] && j.target.classList[1].split("_")[1]-0+1 == d.classList[1].split("_")[1]){
+        d.classList.remove("red")
+      }
+      if(j.target.classList[2]-0+1 == d.classList[2] && j.target.classList[1].split("_")[1]-0-1 == d.classList[1].split("_")[1]){
+        d.classList.remove("red")
+      }
+      if(j.target.classList[2]-0-1 == d.classList[2] && j.target.classList[1].split("_")[1]-0+1 == d.classList[1].split("_")[1]){
+        d.classList.remove("red")
+      }
+      if(j.target.classList[2]-0-1 == d.classList[2] && j.target.classList[1].split("_")[1]-0-1 == d.classList[1].split("_")[1]){
+        d.classList.remove("red")
+      }
+    }) 
   })
 })
 })
 
+// ========================================================================
+// =========================== OT YURISHI =================================
+// ========================================================================
 
-elContentSubitem2.addEventListener("click", (e) => {
-  e.preventDefault()
-  console.log("22222");
+elContentSubitem2.addEventListener("click" ,() => {
+  elitem.forEach((itemm, index) => {
+    itemm.addEventListener("mouseover",(j) => {
+      elitem.forEach((d,h)=>{
+        if(j.target.classList[2]-0+2 == d.classList[2] && j.target.classList[1].split("_")[1]-0+1 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+2 == d.classList[2] && j.target.classList[1].split("_")[1]-0-1 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-2 == d.classList[2] && j.target.classList[1].split("_")[1]-0+1 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-2 == d.classList[2] && j.target.classList[1].split("_")[1]-0-1 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+1 == d.classList[2] && j.target.classList[1].split("_")[1]-0+2 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+1 == d.classList[2] && j.target.classList[1].split("_")[1]-0-2 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+1 == d.classList[2] && j.target.classList[1].split("_")[1]-0-2 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-1 == d.classList[2] && j.target.classList[1].split("_")[1]-0+2 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-1 == d.classList[2] && j.target.classList[1].split("_")[1]-0-2 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+      }) 
+    })
+  })
+
+  elitem.forEach((itemm, index) => {
+    itemm.addEventListener("mouseout",(j) => {
+      elitem.forEach((d,h)=>{
+        if(j.target.classList[2]-0+2 == d.classList[2] && j.target.classList[1].split("_")[1]-0+1 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+2 == d.classList[2] && j.target.classList[1].split("_")[1]-0-1 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-2 == d.classList[2] && j.target.classList[1].split("_")[1]-0+1 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-2 == d.classList[2] && j.target.classList[1].split("_")[1]-0-1 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+1 == d.classList[2] && j.target.classList[1].split("_")[1]-0+2 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+1 == d.classList[2] && j.target.classList[1].split("_")[1]-0-2 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-1 == d.classList[2] && j.target.classList[1].split("_")[1]-0+2 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-1 == d.classList[2] && j.target.classList[1].split("_")[1]-0-2 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+      }) 
+    })
+  })
+})
+
+
+// ========================================================================
+// =========================== FEL YURISHI ================================
+// ========================================================================
+elContentSubitem3.addEventListener("click" ,() => {
+  elitem.forEach((itemm, index) => {
+    itemm.addEventListener("mouseover",(j) => {
+      elitem.forEach((d,h)=>{
+        if(j.target.classList[2]-0+1 == d.classList[2] && j.target.classList[1].split("_")[1]-0+1 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+2 == d.classList[2] && j.target.classList[1].split("_")[1]-0+2 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+3 == d.classList[2] && j.target.classList[1].split("_")[1]-0+3 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+4 == d.classList[2] && j.target.classList[1].split("_")[1]-0+4 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+5 == d.classList[2] && j.target.classList[1].split("_")[1]-0+5 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+6 == d.classList[2] && j.target.classList[1].split("_")[1]-0+6 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+6 == d.classList[2] && j.target.classList[1].split("_")[1]-0+6 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+7 == d.classList[2] && j.target.classList[1].split("_")[1]-0+7 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+8 == d.classList[2] && j.target.classList[1].split("_")[1]-0+8 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+
+
+        if(j.target.classList[2]-0-1 == d.classList[2] && j.target.classList[1].split("_")[1]-0-1 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-2 == d.classList[2] && j.target.classList[1].split("_")[1]-0-2 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-3 == d.classList[2] && j.target.classList[1].split("_")[1]-0-3 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-4 == d.classList[2] && j.target.classList[1].split("_")[1]-0-4 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-5 == d.classList[2] && j.target.classList[1].split("_")[1]-0-5 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-6 == d.classList[2] && j.target.classList[1].split("_")[1]-0-6 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-6 == d.classList[2] && j.target.classList[1].split("_")[1]-0-6 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-7 == d.classList[2] && j.target.classList[1].split("_")[1]-0-7 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-8 == d.classList[2] && j.target.classList[1].split("_")[1]-0-8 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+
+        if(j.target.classList[2]-0+1 == d.classList[2] && j.target.classList[1].split("_")[1]-0-1 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+2 == d.classList[2] && j.target.classList[1].split("_")[1]-0-2 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+3 == d.classList[2] && j.target.classList[1].split("_")[1]-0-3 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+4 == d.classList[2] && j.target.classList[1].split("_")[1]-0-4 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+5 == d.classList[2] && j.target.classList[1].split("_")[1]-0-5 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+6 == d.classList[2] && j.target.classList[1].split("_")[1]-0-6 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+6 == d.classList[2] && j.target.classList[1].split("_")[1]-0-6 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+7 == d.classList[2] && j.target.classList[1].split("_")[1]-0-7 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+8 == d.classList[2] && j.target.classList[1].split("_")[1]-0-8 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+
+        if(j.target.classList[2]-0-1 == d.classList[2] && j.target.classList[1].split("_")[1]-0+1 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-2 == d.classList[2] && j.target.classList[1].split("_")[1]-0+2 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-3 == d.classList[2] && j.target.classList[1].split("_")[1]-0+3 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-4 == d.classList[2] && j.target.classList[1].split("_")[1]-0+4 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-5 == d.classList[2] && j.target.classList[1].split("_")[1]-0+5 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-6 == d.classList[2] && j.target.classList[1].split("_")[1]-0+6 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-6 == d.classList[2] && j.target.classList[1].split("_")[1]-0+6 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-7 == d.classList[2] && j.target.classList[1].split("_")[1]-0+7 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-8 == d.classList[2] && j.target.classList[1].split("_")[1]-0+8 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+      }) 
+    })
+  })
+
+  elitem.forEach((itemm, index) => {
+    itemm.addEventListener("mouseout",(j) => {
+      elitem.forEach((d,h)=>{
+        if(j.target.classList[2]-0+1 == d.classList[2] && j.target.classList[1].split("_")[1]-0+1 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+2 == d.classList[2] && j.target.classList[1].split("_")[1]-0+2 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+3 == d.classList[2] && j.target.classList[1].split("_")[1]-0+3 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+4 == d.classList[2] && j.target.classList[1].split("_")[1]-0+4 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+5 == d.classList[2] && j.target.classList[1].split("_")[1]-0+5 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+6 == d.classList[2] && j.target.classList[1].split("_")[1]-0+6 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+6 == d.classList[2] && j.target.classList[1].split("_")[1]-0+6 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+7 == d.classList[2] && j.target.classList[1].split("_")[1]-0+7 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+8 == d.classList[2] && j.target.classList[1].split("_")[1]-0+8 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+
+        if(j.target.classList[2]-0-1 == d.classList[2] && j.target.classList[1].split("_")[1]-0-1 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-2 == d.classList[2] && j.target.classList[1].split("_")[1]-0-2 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-3 == d.classList[2] && j.target.classList[1].split("_")[1]-0-3 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-4 == d.classList[2] && j.target.classList[1].split("_")[1]-0-4 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-5 == d.classList[2] && j.target.classList[1].split("_")[1]-0-5 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-6 == d.classList[2] && j.target.classList[1].split("_")[1]-0-6 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-6 == d.classList[2] && j.target.classList[1].split("_")[1]-0-6 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-7 == d.classList[2] && j.target.classList[1].split("_")[1]-0-7 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-8 == d.classList[2] && j.target.classList[1].split("_")[1]-0-8 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+
+        if(j.target.classList[2]-0+1 == d.classList[2] && j.target.classList[1].split("_")[1]-0-1 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+2 == d.classList[2] && j.target.classList[1].split("_")[1]-0-2 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+3 == d.classList[2] && j.target.classList[1].split("_")[1]-0-3 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+4 == d.classList[2] && j.target.classList[1].split("_")[1]-0-4 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+5 == d.classList[2] && j.target.classList[1].split("_")[1]-0-5 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+6 == d.classList[2] && j.target.classList[1].split("_")[1]-0-6 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+6 == d.classList[2] && j.target.classList[1].split("_")[1]-0-6 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+7 == d.classList[2] && j.target.classList[1].split("_")[1]-0-7 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+8 == d.classList[2] && j.target.classList[1].split("_")[1]-0-8 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+
+        if(j.target.classList[2]-0-1 == d.classList[2] && j.target.classList[1].split("_")[1]-0+1 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-2 == d.classList[2] && j.target.classList[1].split("_")[1]-0+2 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-3 == d.classList[2] && j.target.classList[1].split("_")[1]-0+3 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-4 == d.classList[2] && j.target.classList[1].split("_")[1]-0+4 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-5 == d.classList[2] && j.target.classList[1].split("_")[1]-0+5 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-6 == d.classList[2] && j.target.classList[1].split("_")[1]-0+6 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-6 == d.classList[2] && j.target.classList[1].split("_")[1]-0+6 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-7 == d.classList[2] && j.target.classList[1].split("_")[1]-0+7 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-8 == d.classList[2] && j.target.classList[1].split("_")[1]-0+8 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+      }) 
+    })
+  })
+})
+
+
+// ========================================================================
+// =========================== QIROLICHA YURISHI ==========================
+// ========================================================================
+
+elContentSubitem4.addEventListener("click" ,() => {
+  elitem.forEach((itemm, index) => {
+    itemm.addEventListener("mouseover",(j) => {
+      elitem.forEach((d,h)=>{
+        if (j.target.classList[2] ==  d.classList[2])   {
+          d.classList.add("red")
+        }
+        if (j.target.classList[1].split("_")[1] == d.classList[1].split("_")[1]) {
+          d.classList.add("red")
+        }
+        // if (d.classList[1].slice(-1) == e.target.classList[1].slice(-1)) {
+        //   d.classList.add("red")
+        // }
+        // if (d.classList[2] == e.target.classList[2]) {
+        //   d.classList.add("red")
+        // }
+
+
+        if(j.target.classList[2]-0+1 == d.classList[2] && j.target.classList[1].split("_")[1] == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2] == d.classList[2] && j.target.classList[1].split("_")[1]-0+1 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-1 == d.classList[2] && j.target.classList[1].split("_")[1] == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2] == d.classList[2] && j.target.classList[1].split("_")[1]-0-1 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+1 == d.classList[2] && j.target.classList[1].split("_")[1]-0+1 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+1 == d.classList[2] && j.target.classList[1].split("_")[1]-0-1 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-1 == d.classList[2] && j.target.classList[1].split("_")[1]-0+1 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-1 == d.classList[2] && j.target.classList[1].split("_")[1]-0-1 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+
+        if(j.target.classList[2]-0+1 == d.classList[2] && j.target.classList[1].split("_")[1]-0+1 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+2 == d.classList[2] && j.target.classList[1].split("_")[1]-0+2 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+3 == d.classList[2] && j.target.classList[1].split("_")[1]-0+3 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+4 == d.classList[2] && j.target.classList[1].split("_")[1]-0+4 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+5 == d.classList[2] && j.target.classList[1].split("_")[1]-0+5 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+6 == d.classList[2] && j.target.classList[1].split("_")[1]-0+6 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+6 == d.classList[2] && j.target.classList[1].split("_")[1]-0+6 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+7 == d.classList[2] && j.target.classList[1].split("_")[1]-0+7 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+8 == d.classList[2] && j.target.classList[1].split("_")[1]-0+8 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+
+
+        if(j.target.classList[2]-0-1 == d.classList[2] && j.target.classList[1].split("_")[1]-0-1 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-2 == d.classList[2] && j.target.classList[1].split("_")[1]-0-2 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-3 == d.classList[2] && j.target.classList[1].split("_")[1]-0-3 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-4 == d.classList[2] && j.target.classList[1].split("_")[1]-0-4 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-5 == d.classList[2] && j.target.classList[1].split("_")[1]-0-5 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-6 == d.classList[2] && j.target.classList[1].split("_")[1]-0-6 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-6 == d.classList[2] && j.target.classList[1].split("_")[1]-0-6 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-7 == d.classList[2] && j.target.classList[1].split("_")[1]-0-7 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-8 == d.classList[2] && j.target.classList[1].split("_")[1]-0-8 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+
+        if(j.target.classList[2]-0+1 == d.classList[2] && j.target.classList[1].split("_")[1]-0-1 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+2 == d.classList[2] && j.target.classList[1].split("_")[1]-0-2 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+3 == d.classList[2] && j.target.classList[1].split("_")[1]-0-3 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+4 == d.classList[2] && j.target.classList[1].split("_")[1]-0-4 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+5 == d.classList[2] && j.target.classList[1].split("_")[1]-0-5 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+6 == d.classList[2] && j.target.classList[1].split("_")[1]-0-6 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+6 == d.classList[2] && j.target.classList[1].split("_")[1]-0-6 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+7 == d.classList[2] && j.target.classList[1].split("_")[1]-0-7 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0+8 == d.classList[2] && j.target.classList[1].split("_")[1]-0-8 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+
+        if(j.target.classList[2]-0-1 == d.classList[2] && j.target.classList[1].split("_")[1]-0+1 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-2 == d.classList[2] && j.target.classList[1].split("_")[1]-0+2 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-3 == d.classList[2] && j.target.classList[1].split("_")[1]-0+3 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-4 == d.classList[2] && j.target.classList[1].split("_")[1]-0+4 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-5 == d.classList[2] && j.target.classList[1].split("_")[1]-0+5 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-6 == d.classList[2] && j.target.classList[1].split("_")[1]-0+6 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-6 == d.classList[2] && j.target.classList[1].split("_")[1]-0+6 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-7 == d.classList[2] && j.target.classList[1].split("_")[1]-0+7 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if(j.target.classList[2]-0-8 == d.classList[2] && j.target.classList[1].split("_")[1]-0+8 == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+      }) 
+    })
+  })
+
+  elitem.forEach((itemm, index) => {
+    itemm.addEventListener("mouseout",(j) => {
+      elitem.forEach((d,h)=>{
+        if (j.target.classList[2] ==  d.classList[2])   {
+          d.classList.remove("red")
+        }
+        if (j.target.classList[1].split("_")[1] == d.classList[1].split("_")[1]) {
+          d.classList.remove("red")
+        }
+
+
+        if(j.target.classList[2]-0+1 == d.classList[2] && j.target.classList[1].split("_")[1]-0+1 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+2 == d.classList[2] && j.target.classList[1].split("_")[1]-0+2 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+3 == d.classList[2] && j.target.classList[1].split("_")[1]-0+3 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+4 == d.classList[2] && j.target.classList[1].split("_")[1]-0+4 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+5 == d.classList[2] && j.target.classList[1].split("_")[1]-0+5 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+6 == d.classList[2] && j.target.classList[1].split("_")[1]-0+6 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+6 == d.classList[2] && j.target.classList[1].split("_")[1]-0+6 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+7 == d.classList[2] && j.target.classList[1].split("_")[1]-0+7 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+8 == d.classList[2] && j.target.classList[1].split("_")[1]-0+8 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+
+        if(j.target.classList[2]-0-1 == d.classList[2] && j.target.classList[1].split("_")[1]-0-1 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-2 == d.classList[2] && j.target.classList[1].split("_")[1]-0-2 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-3 == d.classList[2] && j.target.classList[1].split("_")[1]-0-3 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-4 == d.classList[2] && j.target.classList[1].split("_")[1]-0-4 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-5 == d.classList[2] && j.target.classList[1].split("_")[1]-0-5 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-6 == d.classList[2] && j.target.classList[1].split("_")[1]-0-6 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-6 == d.classList[2] && j.target.classList[1].split("_")[1]-0-6 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-7 == d.classList[2] && j.target.classList[1].split("_")[1]-0-7 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-8 == d.classList[2] && j.target.classList[1].split("_")[1]-0-8 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+
+        if(j.target.classList[2]-0+1 == d.classList[2] && j.target.classList[1].split("_")[1]-0-1 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+2 == d.classList[2] && j.target.classList[1].split("_")[1]-0-2 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+3 == d.classList[2] && j.target.classList[1].split("_")[1]-0-3 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+4 == d.classList[2] && j.target.classList[1].split("_")[1]-0-4 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+5 == d.classList[2] && j.target.classList[1].split("_")[1]-0-5 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+6 == d.classList[2] && j.target.classList[1].split("_")[1]-0-6 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+6 == d.classList[2] && j.target.classList[1].split("_")[1]-0-6 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+7 == d.classList[2] && j.target.classList[1].split("_")[1]-0-7 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+8 == d.classList[2] && j.target.classList[1].split("_")[1]-0-8 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+
+        if(j.target.classList[2]-0-1 == d.classList[2] && j.target.classList[1].split("_")[1]-0+1 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-2 == d.classList[2] && j.target.classList[1].split("_")[1]-0+2 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-3 == d.classList[2] && j.target.classList[1].split("_")[1]-0+3 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-4 == d.classList[2] && j.target.classList[1].split("_")[1]-0+4 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-5 == d.classList[2] && j.target.classList[1].split("_")[1]-0+5 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-6 == d.classList[2] && j.target.classList[1].split("_")[1]-0+6 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-6 == d.classList[2] && j.target.classList[1].split("_")[1]-0+6 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-7 == d.classList[2] && j.target.classList[1].split("_")[1]-0+7 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-8 == d.classList[2] && j.target.classList[1].split("_")[1]-0+8 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+
+        if(j.target.classList[2]-0+1 == d.classList[2] && j.target.classList[1].split("_")[1] == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2] == d.classList[2] && j.target.classList[1].split("_")[1]-0+1 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-1 == d.classList[2] && j.target.classList[1].split("_")[1] == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2] == d.classList[2] && j.target.classList[1].split("_")[1]-0-1 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+1 == d.classList[2] && j.target.classList[1].split("_")[1]-0+1 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0+1 == d.classList[2] && j.target.classList[1].split("_")[1]-0-1 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-1 == d.classList[2] && j.target.classList[1].split("_")[1]-0+1 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if(j.target.classList[2]-0-1 == d.classList[2] && j.target.classList[1].split("_")[1]-0-1 == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+      }) 
+    })
+  })
 })
 
 
@@ -247,16 +951,103 @@ elContentSubitem2.addEventListener("click", (e) => {
 
 
 
-let arr = []
-for (let i = 8; i >= 1; i--){
-  for (let j = 1; j <= 8; j++){
-    let obj2 = {
-      x:i,
-      y:j
-    }
-    arr.push(obj2)
-  }
-}
+// peshka yurishi
+elContentSubitem6.addEventListener("click" ,() => {
+  elitem.forEach((itemm, index) => {
+    itemm.addEventListener("mouseover",(j) => {
+
+      // console.log(itemm.classList[2]);
+      
+      elitem.forEach((d,h)=>{
+        if(j.target.classList[2]-0+1 == d.classList[2] && j.target.classList[1].split("_")[1] == d.classList[1].split("_")[1]){
+          d.classList.add("red")
+        }
+        if (itemm.classList[2] == 2) {
+          if(j.target.classList[2]-0+2 == d.classList[2] && j.target.classList[1].split("_")[1] == d.classList[1].split("_")[1]){
+            d.classList.add("red")
+          }
+        }
+        if (itemm.classList[2] == 1) {
+            d.classList.remove("red")
+        }
+        
+      }) 
+    })
+  })
+
+  elitem.forEach((itemm, index) => {
+    itemm.addEventListener("mouseout",(j) => {
+      elitem.forEach((d,h)=>{
+        if(j.target.classList[2]-0+1 == d.classList[2] && j.target.classList[1].split("_")[1] == d.classList[1].split("_")[1]){
+          d.classList.remove("red")
+        }
+        if (itemm.classList[2] == 2) {
+          if(j.target.classList[2]-0+2 == d.classList[2] && j.target.classList[1].split("_")[1] == d.classList[1].split("_")[1]){
+            d.classList.remove("red")
+          }
+        }
+        if (itemm.classList[2] == 1) {
+          d.classList.remove("red")
+        }
+      }) 
+    })
+  })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//  (e.target.classList[1].slice(-1) - 1 && e.target.classList[2].slice(-1) == el.classList[1].slice(-1) && el.classList[2])
+
+
+
+ 
+
+// let arr = []
+// for (let i = 8; i >= 1; i--){
+//   for (let j = 1; j <= 8; j++){
+//     let obj2 = {
+//       x:i,
+//       y:j
+//     }
+//     arr.push(obj2)
+//   }
+// }
 
 
 
@@ -322,3 +1113,21 @@ for (let i = 8; i >= 1; i--){
 // massiv.forEach((item,index) => {
 //   console.log(index);
 // })
+// // console.log(e.target.classList[1].slice(-1)-0 + 1); // x oqi tepe
+//     // console.log(e.target.classList[2].slice(-1)); // y oqi
+//     // let xoqitepe = e.target.classList[1].slice(-1)-0 + 1
+//     // let yoqitepa = e.target.classList[2].slice(-1)-0 + 1
+//     console.log(e.target.classList[2].slice(-1)-0 + 1);
+
+//     massiv.forEach(el => {
+//       // console.log(el.classList[1]);
+//       // console.log(e.target.classList[2].slice(-1)-0 + 1);
+//       if (el.classList[1].slice(-1)-0+1 == e.target.classList[2].slice(-1)-0+1) {
+//         el.classList.add("red")
+//         // console.log(el.classList[1].slice(-1)-0+1);
+//         // console.log(e.target.classList[2].slice(-1)-0 + 1);
+//       }
+//       // if (el.classList[2] == e.target.classList[2]) {
+//       //   el.classList.add("red")
+//       // }
+//     })
